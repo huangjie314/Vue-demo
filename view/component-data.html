@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id='app'>
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+</div>
+<script type="text/javascript" src='../core/vue.js'></script>
+<script type="text/javascript">
+    var data = {counter:0}
+    Vue.component('my-component',{
+        template:"<button @click='counter += 1'>{{counter}}</button>",
+        data:function(){return {counter:0}}
+    })
+    var vm = new Vue({
+        el:'#app'
+    })
+</script>
+</body>
+</html>

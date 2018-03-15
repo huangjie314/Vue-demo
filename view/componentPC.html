@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <fieldset>
+        <legend>data form parent</legend>
+        <input type="text" name="" v-model='parentData'>
+    </fieldset>
+    <child :my-message="parentData"></child>
+    <hr>
+    <comp :some-props="12"></comp>
+    <hr>
+    <h3>单向数据流</h3>
+    <fieldset>
+        <legend>单向数据流</legend>
+        <input type="text" name="" v-model='hel'>
+    </fieldset>
+    <inputcomp :init-input="hel" v-on:show="showEvent"></inputcomp>
+</div>
+<script type="text/javascript" src="../core/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('child',{
+        props:['myMessage'],
+        template:'<span>{{ myMessage }}</span>'
+    });
+    var compa = {
+        props:['someProps'],
+        template:'<p>{{ someProps }}</p>'
+    }
+    var inputCompa = {
+        props:['initInput'],
+        data: function(){return {counter:this.initInput}},
+        template:'<div><input type="text" v-model="initInput" /><button @click="$emit(\'show\')">ok</button><p>{{initInput}}</p></div>'
+    }
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            parentData:'',
+            hel:''
+        },
+        components:{
+            'comp': compa,
+            'inputcomp': inputCompa
+        },
+        methods:{
+            showEvent:function(){
+                console.log(this.a);
+                this.hel = 100;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

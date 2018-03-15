@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="example">
+    {{ message }}
+</div>
+</body>
+<script type="text/javascript" src="../core/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#example',
+        data:{
+            message:'123'
+        }
+    });
+    vm.message = 'new message'
+    //vm.$el.textContent="new"
+    console.log(vm.$el.textContent);
+    Vue.nextTick(function(){
+        //vm.$el.textContent = 'DOM更新完毕'
+        console.log(vm.$el.textContent)
+    })
+</script>
+</html>

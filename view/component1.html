@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="component">
+    <my-component :class="{active: isActive}" v-for="(item, index) in items" :todo="item" :index='index' v-on:click="alert(index)" ></my-component>
+</div>
+</body>
+<script type="text/javascript" src='../core/vue.js'></script>
+<script type="text/javascript">
+    Vue.component('my-component',{
+        props:['todo','index'],
+        template: '<p class="foo bar">{{todo}}</p>'
+    })
+    var vm = new Vue({
+        el: '#component',
+        data: {
+            isActive: true,
+            items:[
+                '苹果','香蕉','菠萝','橘子'
+            ]
+        },
+        methods:{
+            hint:function(index){
+                alert(index);
+            }
+        }
+    })
+</script>
+</html>

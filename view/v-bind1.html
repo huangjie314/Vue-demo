@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <div class="static"
+     v-bind:class="{ active: isActive, 'text-danger': hasError }">
+    </div>
+    <p :style="{color:activeColor,fontSize:fontSize+'px'}">样式</p>
+    <p :class="[activeClass, errorClass]">数组语法</p>
+</div>
+</body>
+<script type="text/javascript" src="../core/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data: {
+            isActive: true,
+            hasError:false,
+              activeColor:'red',
+              fontSize: 30,
+              activeClass:'active',
+              errorClass: 'error'
+        }
+    })
+</script>
+</html>

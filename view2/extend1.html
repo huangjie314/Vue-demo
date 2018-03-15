@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>s</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<script type="text/javascript" src="../core/vue.js"></script>
+<script type="text/javascript">
+    var Comp = Vue.extend({
+        props:['msg'],
+        template:'<div>{{msg}}</div>'
+    })
+    var vm = new Comp({
+        propsData: {
+            msg: 'hello World'
+        }
+    }).$mount('#app');
+</script>
+</body>
+</html>

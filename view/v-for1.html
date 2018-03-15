@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id='app'>
+    <ul>
+        <li v-for="n in even(numbers)">
+            {{n}}
+        </li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript" src='../core/vue.js'></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            numbers:[1,2,3,4,5,6,7,8,9,10]
+        },
+        computed:{ //计算属性
+            evenNumbers:function(){
+                return this.numbers.filter(function(number){
+                    return number%2 === 0
+                })
+            }
+        },
+        methods:{ //methods属性
+            even:function(numbers){
+                return numbers.filter(function(number){
+                    return number%2===0;
+                })
+            }
+        }
+    })
+</script>
+</html>

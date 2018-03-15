@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <div id="app">
+    <current-input v-model="price"></current-input>
+    </div>
+</body>
+<script type="text/javascript" src="../core/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('current-input',{
+        template:'<input rel="input" v-bind:value="value" v-on:input="updataValue($event.target.value)" />',
+        props: ['value'],
+        methods: {
+            updataValue: function(value){
+                var formatedValue = value.trim().slice(0, value.indexOf('.')+3);
+                this.$emit('input')
+            }
+        }
+    });
+    var vm = new Vue({
+        el:'#app'
+    })
+</script>
+</html>

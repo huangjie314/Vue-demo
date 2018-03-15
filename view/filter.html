@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <p>{{ message }}</p>
+    <p>{{ message | capitalizea }}</p>
+</div>
+</body>
+<script type="text/javascript" src="../core/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            message: 'huangjie'
+        },
+        filters:{
+            capitalizea: function(value){
+                if(!value) return '';
+                value = value.toString();
+                //return value.charAt(0).toUpperCase()+value.slice(1)
+                return value.replace(/\w/, function(v){ return v.toUpperCase()});
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id='app'>
+    <select v-model='selected'>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <br>
+    <p>Selected:{{ selected }}</p>
+
+    <hr>
+    <select v-model="selectedOpt">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <br>
+    <p>{{ selectedOpt }}</p>
+    <hr>
+    <select v-model="see">
+        <option v-bind:value="{number:1234}">123</option>
+    </select>
+    <p>{{ see }}</p>
+</div>
+</body>
+<script type="text/javascript" src='../core/vue.js'></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            selected:[],
+            selectedOpt:'',
+            see: '',
+            options:[
+            {text:'One', value:'A'},{text:'Two', value:'B'},{text:'Three', value:'C'}
+            ]
+
+        }
+    })
+</script>
+</html>

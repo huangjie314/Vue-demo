@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id='app'>
+    <fieldset>
+        <legend>添加</legend>
+        <input v-model="newTodoText" @keyup.enter="addNewTodo" placeholder="Add a todo" />
+    </fieldset>
+    <ul>
+        <todo-item v-for='(item, index) in items' v-bind:title="item" v-on:remove='items.splice(index,1)'></todo-item>
+    </ul>
+</div>
+</body>
+<script type="text/javascript" src='../core/vue.js'></script>
+<script type="text/javascript">
+    Vue.component('todo-item',{
+        props:['title'],
+        template:'<li>{{title}}<button @click="$emit(\'remove\')">X</button></li>'
+    })
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            newTodoText: '',
+            items:['苹果','香蕉','菠萝','橘子','蔬菜']
+        },
+        methods:{
+            addNewTodo:function(){
+                this.items.push(this.newTodoText);
+                this.newTodoText = '';
+            },
+            removeTodo: function(index){
+                this.items.splice(index,1);
+            }
+        }
+    })
+</script>
+</html>
